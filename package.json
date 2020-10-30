@@ -1,0 +1,31 @@
+{
+  "name": "passport-auth",
+  "version": "1.0.0",
+  "description": "Exploring passport authentication with variety of strategies",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "http-status-codes": "^2.1.4",
+    "mongoose": "^5.10.9",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.5",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "pino": "^6.7.0",
+    "pino-pretty": "^4.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  passport-oauth2:
+    container_name: passport-oauth2
+    restart: always
+    build: .
+    ports:
+      - '3030:3030'
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
