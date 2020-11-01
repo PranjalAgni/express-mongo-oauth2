@@ -1,13 +1,14 @@
 const express = require('express');
 const logger = require('../../logger');
+const { verifyJWT } = require('../../middleware');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  logger.info(JSON.stringify(req.body));
+router.post('/', verifyJWT, (req, res) => {
+  logger.info(JSON.stringify(req.user));
   res.json({
     status: 200,
-    message: 'Ok',
+    user: req.user,
   });
 });
 

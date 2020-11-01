@@ -17,4 +17,8 @@ module.exports = {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     redirectURL: process.env.GOOGLE_CALLBACK_URL,
   },
+  jwt: {
+    secretKey: process.env.JWT_SECRET_KEY,
+    expiresIN: '7h',
+  },
 };

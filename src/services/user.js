@@ -20,7 +20,8 @@ class UserService {
       logger.error(ex.stack);
     }
 
-    return user || newUser;
+    const currentUser = user || newUser;
+    return currentUser.toJSON();
   }
 
   async checkUserExists(profileId) {

@@ -4,11 +4,9 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const UserService = require('../services/user');
 const config = require('../config/index');
-const logger = require('../logger');
 
 const initalizePassport = () => {
   passport.serializeUser((user, done) => {
-    logger.info('Seralize User...');
     done(null, user.id);
   });
 
