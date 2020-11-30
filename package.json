@@ -1,5 +1,5 @@
 {
-  "name": "passport-auth",
+  "name": "passport-token-auth",
   "version": "1.0.0",
   "description": "Exploring passport authentication with variety of strategies",
   "main": "src/server.js",
@@ -11,10 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.1.1",
     "http-status-codes": "^2.1.4",
+    "is-docker": "^2.1.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0",

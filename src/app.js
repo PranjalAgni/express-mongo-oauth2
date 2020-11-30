@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
 const db = require('./db/mongoose');
@@ -18,12 +19,14 @@ const initalizeServer = async (app) => {
 
   app.use(compression());
   app.use(helmet());
-  app.use(morgan('common'));
+  app.use(morgan('dev'));
+  app.use(cookieParser());
   app.use(express.json());
   app.use(passport.initialize());
 
   // Load passport configuration
   initalizePassport();
+
   app.use('/api/', routes);
 
   app.use(notFound);
