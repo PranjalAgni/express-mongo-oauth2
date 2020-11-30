@@ -2,8 +2,7 @@
 const passport = require('passport');
 const { Router } = require('express');
 
-const logger = require('../../logger');
-const { generateJWT } = require('../../middleware');
+const { addJWT, addRefreshToken, trimUserData } = require('../../middleware');
 
 const router = Router();
 
@@ -17,10 +16,22 @@ router.get(
 router.get(
   '/google/callback',
   passport.authenticate('google', { session: false }),
-  generateJWT,
+  [trimUserData, addJWT, addRefreshToken],
   (req, res) => {
-    logger.info(req.jwtToken);
+    res.cookie('token', req.jwtToken, {
+      maxAge: 600000,
+      sameSite: 'strict',
+      httpOnly: true,
+    });
+
+    res.cookie('refreshToken', req.refreshToken, {
+      maxAge: 600000,
+      sameSite: 'strict',
+      httpOnly: true,
+    });
+
     res.set('token', req.jwtToken);
+    res.set('refreshToken', req.refreshToken);
     res.send('ok');
   },
 );

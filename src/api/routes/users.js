@@ -1,10 +1,15 @@
-const express = require('express');
+const { Router } = require('express');
 const logger = require('../../logger');
-const { verifyJWT } = require('../../middleware');
+const { isAuthenticated } = require('../../middleware');
 
-const router = express.Router();
+const router = Router();
 
-router.post('/', verifyJWT, (req, res) => {
+router.use((_req, _res, next) => {
+  logger.info('Only called for users routes');
+  next();
+});
+
+router.post('/', isAuthenticated, (req, res) => {
   logger.info(JSON.stringify(req.user));
   res.json({
     status: 200,
